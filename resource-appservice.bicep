@@ -1,13 +1,13 @@
-resource appServiceApp 'Microsoft.Web/sites@2020-06-01' = {
-  name: 'myappservice'
+resource appServicePlan 'Microsoft.Web/serverFarms@2020-06-01' = {
+  name: 'my-appservice-plan'
   location: 'eastus'
-  properties: {
-    serverFarmId: appServicePlan.id
-    httpsOnly: true
+  sku: {
+    name: 'F1'
+    tier: 'Free'
   }
 }
 resource appServiceApp 'Microsoft.Web/sites@2020-06-01' = {
-  name: 'toy-product-launch-1'
+  name: 'my-appservice-app'
   location: 'eastus'
   properties: {
     serverFarmId: appServicePlan.id
